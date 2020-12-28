@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Distort your GAZE</title>
+</head>
+<body>
+  <div class="text01">Distorted <br> GAZE</div>
+  <div class="text02">Distorted <br> GAZE</div>
+    <div class="gaze">
+      <img class="liquify" src="poster_bg.jpg" alt="">
+        <input type="range" min="-300" max="300" value="35" oninput="updateLiquify(this.value);" onchange="updateLiquify(this.value);" />
+      </div>
+
+      <svg id="svgeffects">
+        <defs>
+          <filter class="safari_only" id="liquify">
+                  <feTurbulence baseFrequency="0.015" numOctaves="3" result="warp" type="fractalNoise"></feTurbulence>
+                  <feDisplacementMap id="liquid" in="SourceGraphic" in2="warp" scale="5" xChannelSelector="R" yChannelSelector="B"></feDisplacementMap>
+              </filter>
+        </defs>
+      </svg>
+
+      <script>
+          var updateLiquify = function(val) {
+  document.getElementById('liquid').setAttribute('scale', val);
+};
+      </script>
+</body>
+</html>
